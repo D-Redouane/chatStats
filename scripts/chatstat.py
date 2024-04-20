@@ -19,6 +19,15 @@ def show_or_return(graph_func):
             return graph
     return wrapper
 
+def get_messages_from_chat(self, chat_name):
+        # Get the thread_path for the chat with the given name
+        thread_path = self.chat_df[self.chat_df['title'] == chat_name].index[0]
+
+        # Filter messages for the specific chat
+        messages = self.msg_df[self.msg_df['thread_path'] == thread_path]
+
+        return messages
+
 
 class ChatStat:
     """
